@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 
 public class OnSwipeTouchListener implements View.OnTouchListener {
 
+    private static final int SWIPE_THRESHOLD = 100;
+    private static final int SWIPE_VELOCITY_THRESHOLD = 100;
     private final GestureDetector gestureDetector;
     public OnSwipeTouchListener (Context ctx) {
         gestureDetector = new GestureDetector(ctx,
@@ -26,7 +28,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
             float diffX = e2.getX() - e1.getX();
             if (Math.abs(diffX) > Math.abs(diffY)){
                 // TODO: ADD SWIPE VARIABLES AND FUNCTIONS
-                if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX)) > SWIPE_VELOCITY_THRESHOLD) {
+                if ((Math.abs(diffX) > SWIPE_THRESHOLD) && (Math.abs(velocityX)) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffX > 0) {
                         onSwipeRight();
                     } else {
@@ -35,7 +37,7 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
                 }
                 result = true;
             }
-            else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(VelocityY) > SWIPE_VELOCITY_THRESHOLD) {
+            else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
                 if (diffX > 0){
                     onSwipeBottom();
                 } else {
@@ -50,32 +52,37 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
 
 }
 
+    private void onSwipeTop() {
+    }
+
+    private void onSwipeBottom() {
+    }
+
+    private void onSwipeLeft() {
+    }
+
+    private void onSwipeRight() {
+    }
+
     private class GestureListener implements GestureDetector.OnGestureListener {
         @Override
         public boolean onDown(@NonNull MotionEvent motionEvent) {
             return false;
         }
-
         @Override
         public void onShowPress(@NonNull MotionEvent motionEvent) {
-
         }
-
         @Override
         public boolean onSingleTapUp(@NonNull MotionEvent motionEvent) {
             return false;
         }
-
         @Override
         public boolean onScroll(@NonNull MotionEvent motionEvent, @NonNull MotionEvent motionEvent1, float v, float v1) {
             return false;
         }
-
         @Override
         public void onLongPress(@NonNull MotionEvent motionEvent) {
-
         }
-
         @Override
         public boolean onFling(@NonNull MotionEvent motionEvent, @NonNull MotionEvent motionEvent1, float v, float v1) {
             return false;
